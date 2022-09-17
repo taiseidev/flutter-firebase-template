@@ -11,6 +11,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
 
+  # Auth
+  google_sign_in: ^5.4.1
+
   # Hooks
   flutter_hooks:
 
@@ -20,6 +23,7 @@ dependencies:
   # Firebase
   firebase_core:
   firebase_auth:
+
 
 dev_dependencies:
   flutter_test:
