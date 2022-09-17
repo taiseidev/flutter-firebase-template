@@ -11,8 +11,19 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
 
+  # Auth
+  google_sign_in: ^5.4.1
+
+  # Hooks
+  flutter_hooks:
+
+  # State
+  hooks_riverpod:
+
   # Firebase
-  firebase_core: ^1.22.0
+  firebase_core:
+  firebase_auth:
+
 
 dev_dependencies:
   flutter_test:
