@@ -62,17 +62,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDkdfhqBVsIdigAvutXmlIrNeblPCnUq6c',
-    appId: '1:829526359215:ios:b8be1589b0dd16f5f6685a',
+    appId: '1:829526359215:ios:e28bf8629d63e13ff6685a',
     messagingSenderId: '829526359215',
     projectId: 'flutter-firebase-tpl',
     storageBucket: 'flutter-firebase-tpl.appspot.com',
-    iosClientId: '829526359215-gd9ui8c15ui79rv2lfqustdi1f32tjs1.apps.googleusercontent.com',
-    iosBundleId: 'com.flutter.firebase.template.flutterFirebaseTemplate',
+    iosClientId: '829526359215-jctnv0llbc7p768u999p5m4efkrhmvqp.apps.googleusercontent.com',
+    iosBundleId: 'com.flutter.firebase.template',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyDkdfhqBVsIdigAvutXmlIrNeblPCnUq6c',
-    appId: '1:829526359215:ios:b8be1589b0dd16f5f6685a',
+    appId: '1:829526359215:ios:71c3b899d968d8abf6685a',
     messagingSenderId: '829526359215',
     projectId: 'flutter-firebase-tpl',
     storageBucket: 'flutter-firebase-tpl.appspot.com',
