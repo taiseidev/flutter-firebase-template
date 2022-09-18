@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_firebase_template/feature/auth/sns.dart';
+import 'package:flutter_firebase_template/feature/auth/sns/sns.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../firebase_options.dart';
+import '../../../firebase_options.dart';
 
 final googleCredentialProvider = FutureProvider<OAuthCredential?>((_) async {
   final platform = DefaultFirebaseOptions.currentPlatform;
