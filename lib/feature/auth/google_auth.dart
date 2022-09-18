@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_firebase_template/feature/auth/sms.dart';
+import 'package:flutter_firebase_template/feature/auth/sns.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,13 +18,14 @@ final googleSigninProvider = FutureProvider<OAuthCredential?>((ref) async {
   return credential;
 });
 
-final googleAuthProvider = Provider<Future<void> Function()>((ref) => () async {
-      try {
-        final oauth = await ref.read(googleSigninProvider.future);
-        if (oauth != null) {
-          final credential =
-              await ref.read(userCredentialProvider(oauth).future);
-        }
-        return;
-      } catch (e) {}
-    });
+final googleAuthProvider = Provider<Future<void> Function()>(
+  (ref) => () async {
+    try {
+      final oauth = await ref.read(googleSigninProvider.future);
+      if (oauth != null) {
+        await ref.read(userCredentialProvider(oauth).future);
+      }
+      return;
+    } on Exception catch (_) {}
+  },
+);

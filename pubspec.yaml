@@ -7,16 +7,16 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.17.1 <3.0.0"
 dependencies:
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+  # Hooks
+  flutter_hooks:
 
   # Auth
   google_sign_in: ^5.4.1
   sign_in_with_apple: ^4.1.0
 
-  # Hooks
-  flutter_hooks:
 
   # State
   hooks_riverpod:

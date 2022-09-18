@@ -5,5 +5,5 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 final userCredentialProvider =
     FutureProvider.family<UserCredential, OAuthCredential>(
   (ref, oauth) async =>
-      await ref.read(firebaseAuthProvider).signInWithCredential(oauth),
+      ref.read(firebaseAuthProvider).signInWithCredential(oauth),
 );

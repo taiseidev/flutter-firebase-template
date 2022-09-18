@@ -32,7 +32,7 @@ class Auth {
   Future<UserCredential> signUp(Future<UserCredential> Function() signUp) {
     try {
       return signUp();
-    } catch (e) {
+    } on Exception catch (_) {
       throw Error();
     }
   }
