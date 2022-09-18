@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_template/feature/auth/google_auth.dart';
+import 'package:flutter_firebase_template/feature/auth/sns/apple_auth.dart';
+import 'package:flutter_firebase_template/feature/auth/sns/google_auth.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class GoogleAuthPageBody extends StatelessWidget {
-  const GoogleAuthPageBody({super.key});
+class SnsAuthPageBody extends StatelessWidget {
+  const SnsAuthPageBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,12 @@ class GoogleAuthPageBody extends StatelessWidget {
             builder: (context, ref, child) => SignInButton(
               Buttons.Google,
               onPressed: () => ref.read(googleAuthProvider)(),
+            ),
+          ),
+          Consumer(
+            builder: (context, ref, child) => SignInButton(
+              Buttons.Apple,
+              onPressed: () => ref.read(appleAuthProvider)(),
             ),
           ),
         ],

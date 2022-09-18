@@ -1,17 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_firebase_template/feature/auth/sns.dart';
+import 'package:flutter_firebase_template/feature/auth/sns/sns.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 final appleCredentialProvider = FutureProvider<OAuthCredential>((ref) async {
-  final signinAccount = await SignInWithApple.getAppleIDCredential(
+  final signInAccount = await SignInWithApple.getAppleIDCredential(
     scopes: [
       AppleIDAuthorizationScopes.email,
       AppleIDAuthorizationScopes.fullName,
     ],
   );
   final credential = AppleAuthProvider.credential(
-    signinAccount.authorizationCode,
+    signInAccount.authorizationCode,
   );
 
   return credential;
