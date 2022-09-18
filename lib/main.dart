@@ -16,7 +16,7 @@ void main() async {
       overrides: [
         firebaseAuthProvider.overrideWithValue(FirebaseAuth.instance),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }

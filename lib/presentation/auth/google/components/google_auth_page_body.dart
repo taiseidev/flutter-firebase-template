@@ -1,13 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_template/feature/auth/google_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../feature/auth/auth.dart';
-import '../../../../feature/auth/sms.dart';
-
 class GoogleAuthPageBody extends HookConsumerWidget {
-  const GoogleAuthPageBody({Key? key}) : super(key: key);
+  const GoogleAuthPageBody({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
