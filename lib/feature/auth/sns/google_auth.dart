@@ -26,7 +26,7 @@ final googleCredentialProvider = FutureProvider<OAuthCredential?>((_) async {
   return credential;
 });
 
-final googleAuthProvider = Provider<Future<void> Function()>(
+final googleAuthProvider = Provider.autoDispose<Future<void> Function()>(
   (ref) => () async {
     try {
       final oauth = await ref.watch(googleCredentialProvider.future);
