@@ -12,3 +12,19 @@ final signOutProvider = Provider.autoDispose<Future<void> Function()>(
     } on Exception catch (_) {}
   },
 );
+
+// ログイン状態を監視
+final authUserProvider = StreamProvider<User?>(
+  (ref) => ref.watch(firebaseAuthProvider).userChanges(),
+);
+
+/// whenDataはAsyncValueを加工するために使用。
+/// userIdを監視
+final userIdProvider = Provider<AsyncValue<String?>>(
+  (ref) => ref.watch(authUserProvider).whenData((value) => value?.uid),
+);
+
+// ログイン状態をチェック
+final isSignedInProvider = Provider<AsyncValue<bool>>(
+  (ref) => ref.watch(userIdProvider).whenData((value) => value != null),
+);
