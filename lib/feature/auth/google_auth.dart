@@ -10,12 +10,15 @@ import '../../firebase_options.dart';
 final googleCredentialProvider = FutureProvider<OAuthCredential?>((_) async {
   final platform = DefaultFirebaseOptions.currentPlatform;
   // ignore: todo
-  // TODO: utilファイルを作成する
+  // TODO: Platform用のutilファイルを作成する
   final signinAccount = await GoogleSignIn(
     clientId: Platform.isIOS ? platform.iosClientId : platform.androidClientId,
   ).signIn();
+  if (signinAccount == null) {
+    return null;
+  }
 
-  final auth = await signinAccount!.authentication;
+  final auth = await signinAccount.authentication;
   final credential = GoogleAuthProvider.credential(
     idToken: auth.idToken,
     accessToken: auth.accessToken,
