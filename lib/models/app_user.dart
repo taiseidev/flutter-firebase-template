@@ -14,7 +14,7 @@ class AppUser with _$AppUser {
     @Default('') String name,
     @Default('') String mail,
     @Default('') String imageUrl,
-    String? type, // バックエンド側で作成
+    @Default('') String type,
     @timestampConverter DateTime? createdAt,
     @timestampConverter DateTime? updatedAt,
   }) = _AppUser;

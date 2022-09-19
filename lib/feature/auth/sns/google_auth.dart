@@ -40,6 +40,7 @@ final googleAuthProvider = Provider.autoDispose<Future<void> Function()>(
               name: user.displayName!,
               mail: user.email,
               imageUrl: user.photoURL!,
+              type: 'google', // TODO:refactor
             );
       }
       return;

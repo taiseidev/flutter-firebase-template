@@ -24,7 +24,7 @@ mixin _$AppUser {
   String get name => throw _privateConstructorUsedError;
   String get mail => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
-  String? get type => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   @timestampConverter
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @timestampConverter
@@ -44,7 +44,7 @@ abstract class $AppUserCopyWith<$Res> {
       String name,
       String mail,
       String imageUrl,
-      String? type,
+      String type,
       @timestampConverter DateTime? createdAt,
       @timestampConverter DateTime? updatedAt});
 }
@@ -87,7 +87,7 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -111,7 +111,7 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       String name,
       String mail,
       String imageUrl,
-      String? type,
+      String type,
       @timestampConverter DateTime? createdAt,
       @timestampConverter DateTime? updatedAt});
 }
@@ -155,7 +155,7 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -176,7 +176,7 @@ class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
       this.name = '',
       this.mail = '',
       this.imageUrl = '',
-      this.type,
+      this.type = '',
       @timestampConverter this.createdAt,
       @timestampConverter this.updatedAt});
 
@@ -195,7 +195,8 @@ class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
   @JsonKey()
   final String imageUrl;
   @override
-  final String? type;
+  @JsonKey()
+  final String type;
   @override
   @timestampConverter
   final DateTime? createdAt;
@@ -267,7 +268,7 @@ abstract class _AppUser implements AppUser {
       final String name,
       final String mail,
       final String imageUrl,
-      final String? type,
+      final String type,
       @timestampConverter final DateTime? createdAt,
       @timestampConverter final DateTime? updatedAt}) = _$_AppUser;
 
@@ -282,7 +283,7 @@ abstract class _AppUser implements AppUser {
   @override
   String get imageUrl;
   @override
-  String? get type;
+  String get type;
   @override
   @timestampConverter
   DateTime? get createdAt;
