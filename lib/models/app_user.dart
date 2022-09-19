@@ -1,4 +1,5 @@
 // ignore: unused_import
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_firebase_template/utils/json_converters/timestamp.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,4 +21,8 @@ class AppUser with _$AppUser {
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>
       _$AppUserFromJson(json);
+
+  factory AppUser.fromDocumentSnapshot(DocumentSnapshot snapshot) {
+    return AppUser.fromJson(snapshot.data() as Map<String, dynamic>);
+  }
 }
