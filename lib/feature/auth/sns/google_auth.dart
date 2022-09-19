@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_firebase_template/feature/auth/sns/sns.dart';
+import 'package:flutter_firebase_template/repositories/firestore/app_user_repository.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -31,7 +32,15 @@ final googleAuthProvider = Provider.autoDispose<Future<void> Function()>(
     try {
       final oauth = await ref.watch(googleCredentialProvider.future);
       if (oauth != null) {
-        await ref.watch(userCredentialProvider(oauth).future);
+        final credential =
+            await ref.watch(userCredentialProvider(oauth).future);
+        final user = credential.user;
+        await ref.watch(appUserRepositoryProvider).setAppUser(
+              userId: user!.uid,
+              name: user.displayName!,
+              mail: user.email,
+              imageUrl: user.photoURL!,
+            );
       }
       return;
     } on Exception catch (_) {}
