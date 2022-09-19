@@ -14,7 +14,7 @@ class AppUser with _$AppUser {
     @Default('') String name,
     @Default('') String mail,
     @Default('') String imageUrl,
-    @Default('') String type,
+    @Default(0) int type,
     @timestampConverter DateTime? createdAt,
     @timestampConverter DateTime? updatedAt,
   }) = _AppUser;
@@ -22,7 +22,7 @@ class AppUser with _$AppUser {
   factory AppUser.fromJson(Map<String, dynamic> json) =>
       _$AppUserFromJson(json);
 
-  factory AppUser.fromDocumentSnapshot(DocumentSnapshot snapshot) {
-    return AppUser.fromJson(snapshot.data() as Map<String, dynamic>);
+  factory AppUser.fromDocumentSnapshot(DocumentSnapshot? snapshot) {
+    return AppUser.fromJson(snapshot!.data() as Map<String, dynamic>);
   }
 }

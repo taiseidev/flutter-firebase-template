@@ -4,6 +4,7 @@ import 'package:flutter_firebase_template/feature/auth/sns/google_auth.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../../feature/auth/anonymously.dart';
 import '../../../../feature/auth/auth.dart';
 
 class SnsAuthPageBody extends ConsumerWidget {
@@ -25,6 +26,10 @@ class SnsAuthPageBody extends ConsumerWidget {
           SignInButton(
             Buttons.Apple,
             onPressed: () => ref.read(appleAuthProvider)(),
+          ),
+          ElevatedButton(
+            child: const Text('匿名認証'),
+            onPressed: () => ref.read(signInAnonymouslyProvider)(),
           ),
         ],
       ),
