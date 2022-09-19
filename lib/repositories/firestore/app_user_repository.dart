@@ -26,6 +26,7 @@ class AppUserRepository {
     required String userId,
     required String name,
     String? mail,
+    required int type,
     required String imageUrl,
   }) async {
     await appUserRef(userId: userId).set(
@@ -34,6 +35,7 @@ class AppUserRepository {
         name: name,
         mail: mail ?? '',
         imageUrl: imageUrl,
+        type: type,
         createdAt: DateTime.now(),
         updatedAt: DateTime.now(),
       ),

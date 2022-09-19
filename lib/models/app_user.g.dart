@@ -11,7 +11,7 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
       name: json['name'] as String? ?? '',
       mail: json['mail'] as String? ?? '',
       imageUrl: json['imageUrl'] as String? ?? '',
-      type: json['type'] as String?,
+      type: json['type'] as int? ?? 0,
       createdAt: timestampConverter.fromJson(json['createdAt']),
       updatedAt: timestampConverter.fromJson(json['updatedAt']),
     );
