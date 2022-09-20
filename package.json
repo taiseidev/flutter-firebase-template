@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "firebase-admin": "^11.0.1",
+    "firebase-functions": "^3.23.0"
+  },
+  "name": "functions",
+  "scripts": {
+    "build": "npm run lint && tsc"
+  }
+}
