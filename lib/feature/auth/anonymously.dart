@@ -2,6 +2,7 @@ import 'package:flutter_firebase_template/feature/auth/auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../repositories/firestore/app_user_repository.dart';
+import '../../utils/roggle.dart';
 
 /// 匿名認証
 final signInAnonymouslyProvider = Provider.autoDispose<Future<void> Function()>(
@@ -19,6 +20,8 @@ final signInAnonymouslyProvider = Provider.autoDispose<Future<void> Function()>(
             type: 1,
             imageUrl: '',
           );
-    } on Exception catch (_) {}
+    } on Exception catch (e) {
+      roggle.wtf(e);
+    }
   },
 );
