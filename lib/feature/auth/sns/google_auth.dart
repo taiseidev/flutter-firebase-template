@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../firebase_options.dart';
+import '../../../utils/roggle.dart';
 
 final googleCredentialProvider = FutureProvider<OAuthCredential?>((_) async {
   final platform = DefaultFirebaseOptions.currentPlatform;
@@ -44,6 +45,8 @@ final googleAuthProvider = Provider.autoDispose<Future<void> Function()>(
             );
       }
       return;
-    } on Exception catch (_) {}
+    } on Exception catch (e) {
+      roggle.wtf(e);
+    }
   },
 );

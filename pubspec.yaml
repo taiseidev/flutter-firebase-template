@@ -10,6 +10,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  roggle: ^0.2.1+1
   # Hooks
   flutter_hooks:
 

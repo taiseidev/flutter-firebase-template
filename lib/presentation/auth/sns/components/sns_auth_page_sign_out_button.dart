@@ -8,18 +8,8 @@ class SnsAuthPageSignOutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(
-      builder: (context, ref, child) => Column(
-        children: [
-          FloatingActionButton(
-            onPressed: () => ref.read(signOutProvider)(),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          FloatingActionButton(
-            onPressed: () => ref.read(signOutProvider)(),
-          ),
-        ],
+      builder: (context, ref, child) => FloatingActionButton(
+        onPressed: () => ref.read(signOutProvider)(),
       ),
     );
   }
