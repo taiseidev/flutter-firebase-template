@@ -2,7 +2,7 @@
 
 flutter✖︎firebaseのサンプルをまとめたプロジェクト
 
-## Chat機能
+## SNS機能
 
 ### データスキーム
 
@@ -32,6 +32,8 @@ flutter✖︎firebaseのサンプルをまとめたプロジェクト
 |  createdAt  |  Timestamp  |
 |  updatedAt  |  Timestamp  |
 
+＊ countの更新についてはCloud Functionsを使用して更新する
+
 ## myPosts
 
 - postId
@@ -49,6 +51,14 @@ flutter✖︎firebaseのサンプルをまとめたプロジェクト
 | ---- | ---- |
 |  userId  |  String  |
 |  createdAt  |  Timestamp  |
+
+＊ timeline更新についてはCloud Functionsを使用して更新する<br>
+＊ 追加と削除でそれぞれ4つのトリガーを設定
+   - フォローしているユーザーが投稿したとき(追加)
+   - フォローしているユーザーが投稿を削除したとき(削除)
+   - 新しくユーザーをフォローしたとき(追加)
+   - フォローを解除したとき(削除)
+
 
 ## follows
 
@@ -79,6 +89,8 @@ flutter✖︎firebaseのサンプルをまとめたプロジェクト
 |  createdAt  |  Timestamp  |
 |  updatedAt  |  Timestamp  |
 
+＊ countの更新についてはCloud Functionsを使用して更新する
+
 ## likeUsers
 
 - userId
@@ -86,3 +98,7 @@ flutter✖︎firebaseのサンプルをまとめたプロジェクト
 |  フィールド名  |  型  |
 | ---- | ---- |
 |  createdAt  |  Timestamp  |
+
+
+## 参考
+https://qiita.com/PictoMki/items/52012bf222de1b0440cc
