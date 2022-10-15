@@ -2,15 +2,103 @@
 
 flutter✖︎firebaseのサンプルをまとめたプロジェクト
 
-## Getting Started
+## SNS機能
 
-This project is a starting point for a Flutter application.
+### データスキーム
 
-A few resources to get you started if this is your first Flutter project:
+## コレクション一覧
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+|  コレクション名  |  説明  |
+| ---- | ---- |
+|  users  |  user情報を管理  |
+|  myPosts  |  自分の投稿一覧  |
+|  timelines  |  タイムラインに表示される投稿  |
+|  follows  |  フォローしているユーザー一覧  |
+|  followers  |  フォローワー一覧  |
+|  posts  |  投稿一覧  |
+|  likeUsers  |  お気に入りしているユーザー  |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## users
+
+- Authのuuid
+
+|  フィールド名  |  型  |
+| ---- | ---- |
+|  name  |  String  |
+|  imageUrl  |  String  |
+|  followCount  |  Int  |
+|  followerCount  |  Int  |
+|  myPostCount  |  Int  |
+|  createdAt  |  Timestamp  |
+|  updatedAt  |  Timestamp  |
+
+＊ countの更新についてはCloud Functionsを使用して更新する
+
+## myPosts
+
+- postId
+
+|  フィールド名  |  型  |
+| ---- | ---- |
+|  userId  |  String  |
+|  createdAt  |  Timestamp  |
+
+## timeline
+
+- postId
+
+|  フィールド名  |  型  |
+| ---- | ---- |
+|  userId  |  String  |
+|  createdAt  |  Timestamp  |
+
+＊ timeline更新についてはCloud Functionsを使用して更新する<br>
+＊ 追加と削除でそれぞれ4つのトリガーを設定
+   - フォローしているユーザーが投稿したとき(追加)
+   - フォローしているユーザーが投稿を削除したとき(削除)
+   - 新しくユーザーをフォローしたとき(追加)
+   - フォローを解除したとき(削除)
+
+
+## follows
+
+- userId
+
+|  フィールド名  |  型  |
+| ---- | ---- |
+|  createdAt  |  Timestamp  |
+
+## followers
+
+- userId
+
+|  フィールド名  |  型  |
+| ---- | ---- |
+|  createdAt  |  Timestamp  |
+
+
+## posts
+
+- randomId
+
+|  フィールド名  |  型  |
+| ---- | ---- |
+|  description  |  String  |
+|  imageUrls  |  [String]  |
+|  likeCount  |  Int  |
+|  createdAt  |  Timestamp  |
+|  updatedAt  |  Timestamp  |
+
+＊ countの更新についてはCloud Functionsを使用して更新する
+
+## likeUsers
+
+- userId
+
+|  フィールド名  |  型  |
+| ---- | ---- |
+|  createdAt  |  Timestamp  |
+
+
+## 参考
+https://qiita.com/PictoMki/items/52012bf222de1b0440cc
