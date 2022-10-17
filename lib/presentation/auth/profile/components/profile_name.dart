@@ -6,8 +6,8 @@ class ProfileName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const Text(
+      children: const [
+        Text(
           'Taisei',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -15,10 +15,10 @@ class ProfileName extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        const SizedBox(height: 4),
-        const Text(
+        SizedBox(height: 4),
+        Text(
           'ID:5947596159-74531902',
-          style: const TextStyle(color: Colors.grey),
+          style: TextStyle(color: Colors.grey),
         )
       ],
     );

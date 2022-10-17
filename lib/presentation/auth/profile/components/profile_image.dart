@@ -15,7 +15,6 @@ class ProfileImage extends StatelessWidget {
       padding: 10,
       centerImageUrl:
           'https://images.unsplash.com/photo-1473625247510-8ceb1760943f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1411&q=80',
-      seenColor: Colors.grey,
       unSeenColor: Colors.red,
     );
   }
