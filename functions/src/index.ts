@@ -4,6 +4,7 @@ admin.initializeApp();
 const firestore = admin.firestore();
 
 const DEFAULT_REGION = "asia-northeast1";
+const DEFAULT_COUNT = 0;
 
 exports.createUser = functions
   .region(DEFAULT_REGION)
@@ -12,9 +13,9 @@ exports.createUser = functions
     const newValue = snap.data();
     await firestore.collection("users").doc(newValue.id).set(
       {
-        followCount: 0,
-        followerCount: 0,
-        myPostCount: 0,
+        followCount: DEFAULT_COUNT,
+        followerCount: DEFAULT_COUNT,
+        myPostCount: DEFAULT_COUNT,
       },
       { merge: true }
     );
