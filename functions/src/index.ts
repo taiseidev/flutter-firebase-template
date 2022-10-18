@@ -39,7 +39,7 @@ exports.incrementPostCount = functions
       );
   });
 
-exports.incrementPostCount = functions
+exports.incrementFollowCount = functions
   .region(DEFAULT_REGION)
   .firestore.document(`${USERS_COLL}/{userId}/myPosts/{postId}`)
   .onCreate(async (_, context) => {
