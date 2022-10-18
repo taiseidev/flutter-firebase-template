@@ -38,3 +38,19 @@ exports.incrementPostCount = functions
         { merge: true }
       );
   });
+
+exports.incrementPostCount = functions
+  .region(DEFAULT_REGION)
+  .firestore.document(`${USERS_COLL}/{userId}/myPosts/{postId}`)
+  .onCreate(async (_, context) => {
+    const userId = context.auth?.uid;
+    await firestore
+      .collection(`${USERS_COLL}`)
+      .doc(userId!)
+      .set(
+        {
+          followCount: admin.firestore.FieldValue.increment(INCREMENT_COUNT),
+        },
+        { merge: true }
+      );
+  });
