@@ -41,7 +41,23 @@ exports.incrementPostCount = functions
 
 exports.incrementFollowCount = functions
   .region(DEFAULT_REGION)
-  .firestore.document(`${USERS_COLL}/{userId}/myPosts/{postId}`)
+  .firestore.document(`${USERS_COLL}/{userId}/follows/{followId}`)
+  .onCreate(async (_, context) => {
+    const userId = context.auth?.uid;
+    await firestore
+      .collection(`${USERS_COLL}`)
+      .doc(userId!)
+      .set(
+        {
+          followCount: admin.firestore.FieldValue.increment(INCREMENT_COUNT),
+        },
+        { merge: true }
+      );
+  });
+
+exports.incrementFollowersCount = functions
+  .region(DEFAULT_REGION)
+  .firestore.document(`${USERS_COLL}/{userId}/followers/{followerId}`)
   .onCreate(async (_, context) => {
     const userId = context.auth?.uid;
     await firestore
