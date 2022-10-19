@@ -13,28 +13,22 @@ type SnapshotHandler = {
 type ChangeHandler = {
   trigger: (change: Change, context: Context) => Promise<unknown>;
 };
-// type RequestHandler = {
-//   trigger: (req: Request, resp: Response) => Promise<unknown>;
-// };
 
+// 引数からpathを作成。pathのファイルを読み込み
 const getHandler = async (handlerFileName: string, method: string) => {
-  const handlerFilePath = `./triggers/${method}/${handlerFileName}`;
+  const handlerFilePath = `./${Constants.TRIGGERS}/${method}/${handlerFileName}`;
   return await import(handlerFilePath);
 };
 
-const db = functions.region("asia-northeast1").firestore;
-// const https = functions.region("asia-northeast1").https;
+const db = functions.region(Constants.REGION_DEFAULT).firestore;
 
 /**
  * @param documentPath - トリガー起点の Firestore ドキュメントのパス
  * @param handlerFileName - "./triggers"直下のファイル名（拡張子除く）
  */
-export const onCreate = (
-  documentPath: string,
-  handlerFileName: string,
-  method: string
-) => {
+export const onCreate = (documentPath: string, handlerFileName: string) => {
   return db.document(documentPath).onCreate(async (snapshot, context) => {
+    const method = Constants.ON_CREATE;
     const handler: SnapshotHandler = await getHandler(handlerFileName, method);
     return handler.trigger(snapshot, context);
   });
@@ -44,12 +38,9 @@ export const onCreate = (
  * @param documentPath - トリガー起点の Firestore ドキュメントのパス
  * @param handlerFileName - "./triggers"直下のファイル名（拡張子除く）
  */
-export const onDelete = (
-  documentPath: string,
-  handlerFileName: string,
-  method: string
-) => {
+export const onDelete = (documentPath: string, handlerFileName: string) => {
   return db.document(documentPath).onDelete(async (snapshot, context) => {
+    const method = Constants.ON_UPDATE;
     const handler: SnapshotHandler = await getHandler(handlerFileName, method);
     return handler.trigger(snapshot, context);
   });
@@ -59,26 +50,13 @@ export const onDelete = (
  * @param documentPath - トリガー起点の Firestore ドキュメントのパス
  * @param handlerFileName - "./triggers"直下のファイル名（拡張子除く）
  */
-export const onUpdate = (
-  documentPath: string,
-  handlerFileName: string,
-  method: string
-) => {
+export const onUpdate = (documentPath: string, handlerFileName: string) => {
   return db.document(documentPath).onUpdate(async (change, context) => {
+    const method = Constants.ON_DELETE;
     const handler: ChangeHandler = await getHandler(handlerFileName, method);
     return handler.trigger(change, context);
   });
 };
-
-/**
- * @param handlerFileName - "./triggers"直下のファイル名（拡張子除く）
- */
-// export const onHttps = (handlerFileName: string) => {
-//   return https.onRequest(async (req, resp) => {
-//     const handler: RequestHandler = await getHandler(handlerFileName);
-//     return handler.trigger(req, resp);
-//   });
-// };
 
 // 参考
 // https://knmts.com/as-a-engineer-17/
