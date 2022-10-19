@@ -16,11 +16,11 @@ type ChangeHandler = {
 
 // 引数からpathを作成。pathのファイルを読み込み
 const getHandler = async (handlerFileName: string, method: string) => {
-  const handlerFilePath = `./${Constants.TRIGGERS}/${method}/${handlerFileName}`;
+  const handlerFilePath = `./triggers/${method}/${handlerFileName}`;
   return await import(handlerFilePath);
 };
 
-const db = functions.region(Constants.REGION_DEFAULT).firestore;
+const db = functions.region("asia-northeast1").firestore;
 
 /**
  * @param documentPath - トリガー起点の Firestore ドキュメントのパス
@@ -28,7 +28,7 @@ const db = functions.region(Constants.REGION_DEFAULT).firestore;
  */
 export const onCreate = (documentPath: string, handlerFileName: string) => {
   return db.document(documentPath).onCreate(async (snapshot, context) => {
-    const method = Constants.ON_CREATE;
+    const method = "onCreate";
     const handler: SnapshotHandler = await getHandler(handlerFileName, method);
     return handler.trigger(snapshot, context);
   });
@@ -40,7 +40,7 @@ export const onCreate = (documentPath: string, handlerFileName: string) => {
  */
 export const onDelete = (documentPath: string, handlerFileName: string) => {
   return db.document(documentPath).onDelete(async (snapshot, context) => {
-    const method = Constants.ON_UPDATE;
+    const method = "onUpdate";
     const handler: SnapshotHandler = await getHandler(handlerFileName, method);
     return handler.trigger(snapshot, context);
   });
@@ -52,7 +52,7 @@ export const onDelete = (documentPath: string, handlerFileName: string) => {
  */
 export const onUpdate = (documentPath: string, handlerFileName: string) => {
   return db.document(documentPath).onUpdate(async (change, context) => {
-    const method = Constants.ON_DELETE;
+    const method = "onDelete";
     const handler: ChangeHandler = await getHandler(handlerFileName, method);
     return handler.trigger(change, context);
   });
