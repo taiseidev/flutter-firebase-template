@@ -5,13 +5,11 @@ const firestore = admin.firestore();
 export const trigger = async (snapshot: Snapshot, context: Context) => {
   const userId = context.auth?.uid;
   await firestore
-    .collection(Constants.USERS)
+    .collection("users")
     .doc(userId!)
     .set(
       {
-        followCount: admin.firestore.FieldValue.increment(
-          Constants.INCREMENT_COUNT
-        ),
+        followCount: admin.firestore.FieldValue.increment(1),
       },
       { merge: true }
     );
