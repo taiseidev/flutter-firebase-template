@@ -15,6 +15,9 @@ class AppUser with _$AppUser {
     @Default('') String mail,
     @Default('') String imageUrl,
     @Default(0) int type,
+    @Default(0) int myPostCount,
+    @Default(0) int followCount,
+    @Default(0) int followerCount,
     @timestampConverter DateTime? createdAt,
     @timestampConverter DateTime? updatedAt,
   }) = _AppUser;

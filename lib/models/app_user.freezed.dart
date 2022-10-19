@@ -25,6 +25,9 @@ mixin _$AppUser {
   String get mail => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   int get type => throw _privateConstructorUsedError;
+  int get myPostCount => throw _privateConstructorUsedError;
+  int get followCount => throw _privateConstructorUsedError;
+  int get followerCount => throw _privateConstructorUsedError;
   @timestampConverter
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @timestampConverter
@@ -45,6 +48,9 @@ abstract class $AppUserCopyWith<$Res> {
       String mail,
       String imageUrl,
       int type,
+      int myPostCount,
+      int followCount,
+      int followerCount,
       @timestampConverter DateTime? createdAt,
       @timestampConverter DateTime? updatedAt});
 }
@@ -64,6 +70,9 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
     Object? mail = freezed,
     Object? imageUrl = freezed,
     Object? type = freezed,
+    Object? myPostCount = freezed,
+    Object? followCount = freezed,
+    Object? followerCount = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -87,6 +96,18 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as int,
+      myPostCount: myPostCount == freezed
+          ? _value.myPostCount
+          : myPostCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followCount: followCount == freezed
+          ? _value.followCount
+          : followCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followerCount: followerCount == freezed
+          ? _value.followerCount
+          : followerCount // ignore: cast_nullable_to_non_nullable
               as int,
       createdAt: createdAt == freezed
           ? _value.createdAt
@@ -112,6 +133,9 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       String mail,
       String imageUrl,
       int type,
+      int myPostCount,
+      int followCount,
+      int followerCount,
       @timestampConverter DateTime? createdAt,
       @timestampConverter DateTime? updatedAt});
 }
@@ -132,6 +156,9 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? mail = freezed,
     Object? imageUrl = freezed,
     Object? type = freezed,
+    Object? myPostCount = freezed,
+    Object? followCount = freezed,
+    Object? followerCount = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -156,6 +183,18 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as int,
+      myPostCount: myPostCount == freezed
+          ? _value.myPostCount
+          : myPostCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followCount: followCount == freezed
+          ? _value.followCount
+          : followCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followerCount: followerCount == freezed
+          ? _value.followerCount
+          : followerCount // ignore: cast_nullable_to_non_nullable
+              as int,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -177,6 +216,9 @@ class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
       this.mail = '',
       this.imageUrl = '',
       this.type = 0,
+      this.myPostCount = 0,
+      this.followCount = 0,
+      this.followerCount = 0,
       @timestampConverter this.createdAt,
       @timestampConverter this.updatedAt});
 
@@ -198,6 +240,15 @@ class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
   @JsonKey()
   final int type;
   @override
+  @JsonKey()
+  final int myPostCount;
+  @override
+  @JsonKey()
+  final int followCount;
+  @override
+  @JsonKey()
+  final int followerCount;
+  @override
   @timestampConverter
   final DateTime? createdAt;
   @override
@@ -206,7 +257,7 @@ class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUser(id: $id, name: $name, mail: $mail, imageUrl: $imageUrl, type: $type, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'AppUser(id: $id, name: $name, mail: $mail, imageUrl: $imageUrl, type: $type, myPostCount: $myPostCount, followCount: $followCount, followerCount: $followerCount, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -219,6 +270,9 @@ class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
       ..add(DiagnosticsProperty('mail', mail))
       ..add(DiagnosticsProperty('imageUrl', imageUrl))
       ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('myPostCount', myPostCount))
+      ..add(DiagnosticsProperty('followCount', followCount))
+      ..add(DiagnosticsProperty('followerCount', followerCount))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
@@ -233,6 +287,12 @@ class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
             const DeepCollectionEquality().equals(other.mail, mail) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.myPostCount, myPostCount) &&
+            const DeepCollectionEquality()
+                .equals(other.followCount, followCount) &&
+            const DeepCollectionEquality()
+                .equals(other.followerCount, followerCount) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -246,6 +306,9 @@ class _$_AppUser with DiagnosticableTreeMixin implements _AppUser {
       const DeepCollectionEquality().hash(mail),
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(myPostCount),
+      const DeepCollectionEquality().hash(followCount),
+      const DeepCollectionEquality().hash(followerCount),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -269,6 +332,9 @@ abstract class _AppUser implements AppUser {
       final String mail,
       final String imageUrl,
       final int type,
+      final int myPostCount,
+      final int followCount,
+      final int followerCount,
       @timestampConverter final DateTime? createdAt,
       @timestampConverter final DateTime? updatedAt}) = _$_AppUser;
 
@@ -284,6 +350,12 @@ abstract class _AppUser implements AppUser {
   String get imageUrl;
   @override
   int get type;
+  @override
+  int get myPostCount;
+  @override
+  int get followCount;
+  @override
+  int get followerCount;
   @override
   @timestampConverter
   DateTime? get createdAt;
